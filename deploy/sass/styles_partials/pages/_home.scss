@@ -1,0 +1,25 @@
+// HOME
+// ====================================================================
+%home-cont {
+    background-color: $color-page-background;
+    @include flexbox(flex, column, nowrap, center, center, center);
+    main{
+        @include box-sizing();
+        width: 100%;
+        max-width: $breakpoint;
+        margin: 0px auto;
+        display: block;
+
+        @media (max-width: $breakpoint) { 
+            padding: 10px;
+        }
+    }
+}
+
+
+
+// HOME - CALLS
+// ====================================================================
+body {
+    @extend %home-cont;
+}

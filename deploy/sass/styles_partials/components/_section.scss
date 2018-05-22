@@ -1,0 +1,223 @@
+// SECTION - COMPONTENTS
+// ====================================================================
+%section-cont {
+    @include box-sizing();
+    width: 100%;
+    max-width: $breakpoint;
+    position: relative;
+    @media (max-width: $breakpoint) {}
+    @media (min-width: $breakpoint) {
+        padding-left: ($breakpoint - $contWidth);
+    }
+}
+
+%section-list-ul {
+    ul {
+        @include border-radius(3px);
+        @include box-sizing();
+        background-color: $color-gray-light;
+        margin: 0px;
+        padding: 0px;
+        @media (min-width: $breakpoint) {}
+    }
+}
+
+%section-list-li {
+    >ul>li {
+        @include flexbox(flex, row, wrap, flex-start, center, center);
+        @include box-sizing();
+        padding: 10px;
+        list-style: none;
+        cursor: pointer;
+        position: relative;
+        &:hover {
+            background-color: $color-white;
+        }
+        &.active {
+            background: $color-red;
+            .ft {
+                border-color: $color-gray-light;
+            }
+            .name {
+                color: $color-white;
+            }
+            .description {
+                color: $color-red-dark;
+            }
+            .percent {
+                @include display-flex();
+                @extend %anim-fadeIn;
+            }
+        }
+    }
+}
+
+%section-list-li--img {
+    .ftCont {
+        margin-right: 20px;
+        position: relative;
+        .ft {
+            @include border-radius(50px);
+            border: 4px solid $color-red;
+            display: block;
+            width: 60px;
+            height: 60px;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+        }
+        em {
+            @include border-radius(50px);
+            @include fonte($font-one, bold, 14px, $color-gray);
+            border: 1px solid $color-gray-dark;
+            background: $color-gray-light;
+            text-align: center;
+            display: block;
+            padding: 2px 0px;
+            width: 22px;
+            position: absolute;
+            top: 47px;
+            left: 45px;
+        }
+    }
+}
+
+%section-list-li--info {
+    .infocont {
+        .name {
+            @include fonte($font-one, 500, 18px, $color-red);
+            display: block;
+        }
+        .description {
+            @include fonte($font-one, 500, 12px, $color-gray-dark);
+        }
+    }
+}
+
+%section-list-li--percent {
+    li .percent {
+        background: $color-gray-light;
+        display: none;
+        >div {
+            &.positive {
+                span {
+                    @include radiustl(5px);
+                }
+                &:after {
+                    @include opacity(.2);
+                    content: "";
+                    width: 1px;
+                    height: 100%;
+                    background: $color-black;
+                    position: absolute;
+                    right: 0px;
+                    top: 0px;
+                }
+            }
+            &.negative {
+                span {
+                    @include radiustr(5px);
+                }
+                &:before {
+                    @include opacity(.2);
+                    content: "";
+                    width: 1px;
+                    height: 100%;
+                    background: $color-white;
+                    position: absolute;
+                    left: 0px;
+                    top: 0px;
+                }
+            }
+        }
+        span {
+            @include box-sizing();
+            @include fonte($font-one, bold, 10px, $color-white);
+            background: $color-red;
+            display: block;
+            padding: 2px 8px;
+        }
+        strong {
+            @include box-sizing();
+            @include fonte($font-one, bold, 24px, $color-gray);
+            text-align: center;
+            display: block;
+            padding: 4px 0px;
+            width: 100%;
+        }
+    }
+
+
+    @media (min-width: $breakpoint) {
+        .percent {
+            @include flexbox(flex, row, nowrap, flex-start, flex-start, flex-start);
+            @include border-radius(5px);
+            position: absolute;
+            top: 10px;
+            right: -170px;
+            width: 150px;
+            &:before {
+                @include set-icon($fa-var-caret-left, 30px, 300, $color-gray-light);
+                position: absolute;
+                left: -10px;
+                top: 9px;
+            }
+            >div {
+                @include flexbox(flex, column, nowrap, flex-start, flex-start, flex-start);
+                position: relative;
+            }
+        }
+    }
+
+    @media (max-width: $breakpoint) {
+        li .percent {
+            width: 100%;
+            margin-top: 10px;
+            >div {
+                &.positive {
+                    span {
+                        @include radiustl(0px);
+                    }
+                    &:after {
+                        @include opacity(.2);
+                        content: "";
+                        width: 1px;
+                        height: 100%;
+                        background: $color-black;
+                        position: absolute;
+                        right: 0px;
+                        top: 0px;
+                    }
+                }
+                &.negative {
+                    span {
+                        @include radiustr(0px);
+                    }
+                    &:before {
+                        @include opacity(.2);
+                        content: "";
+                        width: 1px;
+                        height: 100%;
+                        background: $color-white;
+                        position: absolute;
+                        left: 0px;
+                        top: 0px;
+                    }
+                }
+            }
+        }
+    }
+
+    
+}
+
+// SECTION - CALLS
+// ====================================================================
+section {
+    @extend %section-cont;
+    @extend %section-list-ul;
+    @extend %section-list-li;
+    @extend %section-list-li--img;
+    @extend %section-list-li--info;
+    @extend %section-list-li--percent;
+}

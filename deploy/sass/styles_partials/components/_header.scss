@@ -1,0 +1,57 @@
+// HEADER
+// ====================================================================
+%header-cont {
+    width: 100%;
+    max-width: $breakpoint;
+    position: relative;
+}
+
+%header-logo {
+    #logo {
+        z-index: 1;
+        position: relative;
+        img{
+            border: 0px;
+        }
+
+        @media (max-width: $breakpoint) { 
+            margin: 0px auto;
+            display: block;
+            text-align: center;
+        }
+
+    }
+}
+
+%header-title {
+    h1 {
+        @include border-radius(3px);
+        @include box-sizing();
+        @include fonte($font-one, bold, 30px, $color-gray-dark);
+        background-color: $color-gray-light;
+        width: 100%;
+        padding: 5px 0px;
+
+        @media (max-width: $breakpoint) { 
+            text-align: center;
+        }
+        
+        @media (min-width: $breakpoint) { 
+            max-width: $contWidth;
+            float: right;
+            padding-right: 25px;
+            text-align: right;
+            position: absolute;
+            right: 0px;
+            top: 100px;
+        }
+    }
+}
+
+// HEADER - CALLS
+// ====================================================================
+header {
+    @extend %header-cont;
+    @extend %header-logo;
+    @extend %header-title;
+}

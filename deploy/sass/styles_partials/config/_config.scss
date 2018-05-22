@@ -1,0 +1,18 @@
+$img-url: "assets/img";
+
+$contWidth: 342px;
+$breakpoint: 374px;
+
+.hidden{
+    display: none;
+}
+
+
+@media (min-width: $breakpoint) { 
+    body, html{
+        margin: 0px;
+        padding: 0px;
+        height: 100%;
+        width: 100%;
+    }
+}

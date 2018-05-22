@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html lang="en" ng-app="fazenda">
+
+<head>
+  <title>R7 FrontEnd Test</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="stylesheets/style.css" media="all">
+</head>
+
+<body >
+
+  <main ng-controller="fazendaCtrl as ctrl">
+
+    <header>
+      <a href="index.html" id="logo">
+        <img src="img/logo.png" alt="Logomarca A Fazenda">
+      </a>
+      <h1>RANKING</h1>
+    </header>
+
+    <section>
+      <ul>
+        <li class="repeated-item" ng-repeat="farmer in farmers | orderBy: 'negative'" ng-click="toggle.state = !toggle.state" ng-class="{'active' : toggle.state}">
+          <div ng-model="getTopList"></div>
+          <div class="ftCont">
+            <div class="ft" style="background-image: url({{farmer.picture}})"></div>
+            <em>{{$index + 1}}</em>
+          </div>
+          <div class="infocont">
+            <span class="name" ng-bind="farmer.name"></span>
+            <span class="description" ng-bind-html="farmer.description"></span> <br>
+          </div>
+          <div class="percent">
+            <div class="positive">
+              <span>GOSTAM</span>
+              <strong>{{getPercent(farmer.positive, farmer.negative, 1)}}</strong>
+            </div>
+            <div class="negative">
+              <span>NÃO GOSTAM</span>
+              <strong>{{getPercent(farmer.positive, farmer.negative, 0)}}</strong>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+
+  </main>
+
+  <script type="text/javascript" src="javascripts/angular.min.js"></script>
+  <script type="text/javascript" src="javascripts/angular-animate.min.js"></script>
+  <script type="text/javascript" src="javascripts/angular-sanitize.min.js"></script>
+  <script src="javascripts/main.js"></script>
+</body>
+
+</html>
